@@ -62,26 +62,31 @@ class _MyHomePageState extends State<MyHomePage> {
         },
         items: [
           FFNavigationBarItem(
-            iconData: Icons.calendar_today,
+            // iconData: Icons.calendar_today,
+            svgasset: "assets/nav_home.svg",
             label: 'Bar Theme',
           ),
           FFNavigationBarItem(
-            iconData: Icons.people,
+            // iconData: Icons.people,
+            svgasset: "assets/nav_home.svg",
             label: 'Orange',
             selectedBackgroundColor: Colors.orange,
           ),
           FFNavigationBarItem(
-            iconData: Icons.attach_money,
+            // iconData: Icons.attach_money,
+            svgasset: "assets/nav_home.svg",
             label: 'Purple',
             selectedBackgroundColor: Colors.purple,
           ),
           FFNavigationBarItem(
-            iconData: Icons.note,
+            // iconData: Icons.note,
+            svgasset: "assets/nav_home.svg",
             label: 'Blue',
             selectedBackgroundColor: Colors.blue,
           ),
           FFNavigationBarItem(
-            iconData: Icons.settings,
+            // iconData: Icons.settings,
+            svgasset: "assets/nav_home.svg",
             label: 'Red Item',
             selectedBackgroundColor: Colors.red,
           ),

@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 import 'ff_navigation_bar_theme.dart';
 
 // This class has mutable instance properties as they are used to store
@@ -14,7 +15,7 @@ import 'ff_navigation_bar_theme.dart';
 // ignore: must_be_immutable
 class FFNavigationBarItem extends StatelessWidget {
   final String label;
-  final IconData iconData;
+  final String svgasset;
   final Duration animationDuration;
   Color selectedBackgroundColor;
   Color selectedForegroundColor;
@@ -51,7 +52,7 @@ class FFNavigationBarItem extends StatelessWidget {
     this.selectedBackgroundColor,
     this.selectedForegroundColor,
     this.selectedLabelColor,
-    this.iconData,
+    this.svgasset,
     this.animationDuration = kDefaultAnimationDuration,
   }) : super(key: key);
 
@@ -77,7 +78,7 @@ class FFNavigationBarItem extends StatelessWidget {
     );
   }
 
-  Widget _makeIconArea(double itemWidth, IconData iconData) {
+  Widget _makeIconArea(double itemWidth, String iconData) {
     bool isSelected = _isItemSelected();
     double radius = itemWidth / 2;
     double innerBoxSize = itemWidth - 8;
@@ -101,10 +102,10 @@ class FFNavigationBarItem extends StatelessWidget {
   }
 
   Widget _makeIcon(
-    IconData iconData,
+    String iconData,
   ) {
     bool isSelected = _isItemSelected();
-    return Icon(
+    return SvgPicture.asset(
       iconData,
       color: isSelected
           ? selectedForegroundColor ?? theme.selectedItemIconColor
@@ -153,7 +154,7 @@ class FFNavigationBarItem extends StatelessWidget {
     double shadowTopSpacer = 4;
 
     Widget labelWidget = _makeLabel(label);
-    Widget iconAreaWidget = _makeIconArea(itemWidth, iconData);
+    Widget iconAreaWidget = _makeIconArea(itemWidth, svgasset);
     Widget shadowWidget = showSelectedItemShadow ? _makeShadow() : Container();
 
     return AnimatedContainer(
@@ -164,6 +165,8 @@ class FFNavigationBarItem extends StatelessWidget {
         width: itemWidth,
         height: itemHeight,
         child: Stack(
+          // clipBehavior: Clip.,
+          // ignore: deprecated_member_use
           overflow: Overflow.visible,
           children: <Widget>[
             Positioned(
