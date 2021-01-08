@@ -107,7 +107,7 @@ class FFNavigationBarItem extends StatelessWidget {
     bool isSelected = _isItemSelected();
     return SvgPicture.asset(
       iconData,
-      height: isSelected ? 12 : 10,
+      height: isSelected ? 7 : 12,
       color: isSelected
           ? selectedForegroundColor ?? theme.selectedItemIconColor
           : theme.unselectedItemIconColor,
