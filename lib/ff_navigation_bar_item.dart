@@ -14,17 +14,17 @@ import 'ff_navigation_bar_theme.dart';
 
 // ignore: must_be_immutable
 class FFNavigationBarItem extends StatelessWidget {
-  final String label;
-  final String svgasset;
+  final String? label;
+  final String? svgasset;
   final Duration animationDuration;
-  Color selectedBackgroundColor;
-  Color selectedForegroundColor;
-  Color selectedLabelColor;
+  Color? selectedBackgroundColor;
+  Color? selectedForegroundColor;
+  Color? selectedLabelColor;
 
-  int index;
-  int selectedIndex;
-  FFNavigationBarTheme theme;
-  bool showSelectedItemShadow;
+  int? index;
+  int? selectedIndex;
+  late FFNavigationBarTheme theme;
+  late bool showSelectedItemShadow;
   double itemWidth;
 
   void setIndex(int index) {
@@ -32,7 +32,7 @@ class FFNavigationBarItem extends StatelessWidget {
   }
 
   Color _getDerivedBorderColor() {
-    return theme.selectedItemBorderColor ?? theme.barBackgroundColor;
+    return theme.selectedItemBorderColor;
   }
 
   Color _getBorderColor(bool isOn) {
@@ -46,7 +46,7 @@ class FFNavigationBarItem extends StatelessWidget {
   static const kDefaultAnimationDuration = Duration(milliseconds: 1500);
 
   FFNavigationBarItem({
-    Key key,
+    Key? key,
     this.label,
     this.itemWidth = 60,
     this.selectedBackgroundColor,
@@ -154,8 +154,8 @@ class FFNavigationBarItem extends StatelessWidget {
     double iconTopSpacer = isSelected ? 0 : 2;
     double shadowTopSpacer = 4;
 
-    Widget labelWidget = _makeLabel(label);
-    Widget iconAreaWidget = _makeIconArea(itemWidth, svgasset);
+    Widget labelWidget = _makeLabel(label!);
+    Widget iconAreaWidget = _makeIconArea(itemWidth, svgasset!);
     Widget shadowWidget = showSelectedItemShadow ? _makeShadow() : Container();
 
     return AnimatedContainer(
